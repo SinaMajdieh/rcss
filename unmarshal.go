@@ -25,6 +25,10 @@ func ProcessPlayerType(m PlayerType, team Team) {
 	team.PlayerType(m)
 }
 
+func ProcessSenseBody(m SenseBody, team Team) {
+	team.SenseBody(m)
+}
+
 func ProcessHear(m Hear, team Team) {
 	if PlayMode(m.Message) == KickOffLeft || PlayMode(m.Message) == KickOffRight {
 		team.Kickoff()
@@ -204,6 +208,7 @@ func ProcessSee(obj string, time string) Object {
 
 	return Flag{}
 }
+
 func ToSexp(text string) ([]chewxySexp.Sexp, error) {
 	Sexp, err := chewxySexp.ParseString(text)
 	return Sexp, err
