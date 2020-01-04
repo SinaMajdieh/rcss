@@ -648,6 +648,41 @@ func (h *Hear) SetValues() {
 	h.Message = h.Hear.Array[2]
 }
 
+type SenseBody struct {
+	ViewMode  []string  `sexp:"view_mode,siblings"`
+	Stamina   []float64 `sexp:"stamina,siblings"`
+	Speed     []float64 `sexp:"speed,siblings"`
+	HeadAngle float64   `sexp:"head_angle"`
+	Kick      float64   `sexp:"kick"`
+	Dash      float64   `sexp:"dash"`
+	Turn      float64   `sexp:"turn"`
+	Say       float64   `sexp:"say"`
+	TurnNeck  float64   `sexp:"turn_neck"`
+	Catch     float64   `sexp:"catch"`
+	Move      float64   `sexp:"move"`
+	ChangView float64   `sexp:"change_view"`
+	Time      int
+}
+
+// func (sensebody *SenseBody) ProcessAttributes(attributes []string) {
+
+// }
+
+// type ViewMode struct {
+// 	A1 string
+// 	A2 string
+// }
+
+// type Stamina struct {
+// 	Stamina float64
+// 	Effort  float64
+// }
+
+// type Speed struct {
+// 	AmountOfSpeed    float64
+// 	DirectionOfSpedd float64
+// }
+
 type See struct {
 	see struct {
 		Array []string `sexp:"see,siblings"`
@@ -925,7 +960,7 @@ type Team interface {
 	PlayerType(pt PlayerType)
 
 	Hear()
-	SenseBody()
+	SenseBody(sb SenseBody)
 
 	Score()
 }
