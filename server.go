@@ -212,7 +212,19 @@ func (s server) bind(team Team) {
 				}
 
 			case "sense_body":
+				var m SenseBody
 
+				child := fmt.Sprint(fmt.Sprint(expr[0].Tail()))
+				m.Time, _ = strconv.Atoi(SexpHeadString(child))
+				child = SexpTailString(child)
+				child = child[1 : len(child)-1]
+				newast, err := sexp.Parse(strings.NewReader(child), nil)
+				if nil != err {
+					fmt.Printf("Error on parsing player_param : %s\n", err)
+				} else {
+					newast.Unmarshal(&m)
+					ProcessSenseBody(m, team)
+				}
 			case "score":
 
 			case "error":
